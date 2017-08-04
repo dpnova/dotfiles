@@ -13,6 +13,8 @@ import XMonad.Layout.Grid
 import XMonad.Layout.Spacing
 import XMonad.Layout.ShowWName
 import XMonad.Layout.Reflect
+import XMonad.Layout.OneBig
+import XMonad.Actions.CycleWindows
 import XMonad.Layout.Magnifier
 import qualified Data.Map as M
 import XMonad.Core as XMonad hiding
@@ -62,6 +64,10 @@ main = do
 		avoidStruts Full ||| Grid |||
 		-- (magnifiercz' 1.8 $ avoidStruts Grid) |||
 		avoidStruts (spacing 5 $ reflectVert (Mirror (Tall 1 (3/100) (1/2)))) |||
+		avoidStruts Full |||
+		(magnifiercz' 1.2 $ avoidStruts Grid) |||
+		avoidStruts (spacing 5 $ reflectVert (Mirror (Tall 1 (3/100) (1/2)))) |||
+		OneBig (0.5) (0.5) |||
 		layoutHook defaultConfig
         } `additionalKeys`
         [ ((0, xK_Scroll_Lock), spawn "dm-tool lock")
@@ -124,6 +130,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask .|. shiftMask, xK_slash ), spawn ("echo \"" ++ help ++ "\" | xmessage -file -")) -- %! Run xmessage with a summary of the default keybindings (useful for beginners)
     -- repeat the binding for non-American layout keyboards
     , ((modMask              , xK_question), spawn ("echo \"" ++ help ++ "\" | xmessage -file -"))
+    , ((mod4Mask,  xK_s), cycleRecentWindows [xK_Super_L] xK_s xK_w)
     ]
     ++
     -- mod-[1..9] %! Switch to workspace N

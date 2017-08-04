@@ -42,7 +42,6 @@ nnoremap <localleader>o :EnOrganizeImports<CR>
 autocmd BufWritePost *.scala silent :EnTypeCheck
 au FileType scala nnoremap <localleader>d :EnDeclarationSplit<CR>
 
-
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 autocmd Filetype json setlocal ts=2 sts=2 sw=2
 
@@ -97,4 +96,14 @@ let g:gitgutter_sign_added = emoji#for('small_blue_diamond')
 let g:gitgutter_sign_modified = emoji#for('small_orange_diamond')
 let g:gitgutter_sign_removed = emoji#for('small_red_triangle')
 let g:gitgutter_sign_modified_removed = emoji#for('collision')
+set pastetoggle=<F3>
+set clipboard=unnamed
+let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
+set updatetime=250
+
+" sudo apt-get install ttf-ancient-fonts
+" let g:gitgutter_sign_added = emoji#for('small_blue_diamond')
+" let g:gitgutter_sign_modified = emoji#for('small_orange_diamond')
+" let g:gitgutter_sign_removed = emoji#for('small_red_triangle')
+" let g:gitgutter_sign_modified_removed = emoji#for('collision')
 let ensime_server_v2=1

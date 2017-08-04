@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+gksu "mount -v -t hfsplus -o ro,sizelimit=120101797888 /dev/sda2 /mnt/osx"

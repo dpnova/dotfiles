@@ -88,6 +88,7 @@ export KEYTIMEOUT=1
 powerline-daemon -q
 . /usr/local/lib/python2.7/dist-packages/powerline/bindings/zsh/powerline.zsh
 
+export PATH=$PATH:/home/dpn/bin
 
 alias cb=git_current_branch
 
@@ -125,4 +126,3 @@ fi
 exec xset m 20/10 10 r rate 280 22 b on &
 export PATH="$HOME/.nodenv/bin:$PATH"
 export PATH="./node_modules/.bin:$PATH"
-export PATH=$PATH:/home/dpn/bin
