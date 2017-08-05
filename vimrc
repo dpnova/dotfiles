@@ -10,6 +10,7 @@ let g:solarized_italic=1
 call plug#begin('~/.vim/plugged')
 
 Plug 'junegunn/vim-peekaboo'
+Plug 'tpope/vim-fugitive'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
@@ -27,6 +28,8 @@ Plug 'davidhalter/jedi-vim'
 Plug 'nvie/vim-flake8'
 Plug 'junegunn/vim-emoji'
 Plug 'ryanoasis/vim-devicons'
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
 
 call plug#end()
 
@@ -39,6 +42,10 @@ nnoremap <localleader>o :EnOrganizeImports<CR>
 autocmd BufWritePost *.scala silent :EnTypeCheck
 au FileType scala nnoremap <localleader>d :EnDeclarationSplit<CR>
 
+autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
+autocmd Filetype json setlocal ts=2 sts=2 sw=2
+
+
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.class,.git,*.cache,target
 " Ctrl-Space for completions. Heck Yeah!
 inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
@@ -50,6 +57,7 @@ imap <C-@> <C-Space>
 
 
 map <C-n> :NERDTreeToggle<CR>
+map <C-m> :NERDTreeFind<CR>
 map <C-p> :Files<CR>
 set nu
 set omnifunc=syntaxcomplete#Complete
@@ -77,6 +85,17 @@ autocmd BufWritePre * %s/\s\+$//e
 
 " check flake8 on save
 autocmd BufWritePost *.py call Flake8()
+let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
+let g:syntastic_javascript_checkers = ['eslint', 'flow']
+let g:syntastic_javascript_flow_exe = 'flow'
+let g:syntastic_javascript_eslint_exe='$(npm bin)/eslint'
+set updatetime=250
+
+" sudo apt-get install ttf-ancient-fonts
+let g:gitgutter_sign_added = emoji#for('small_blue_diamond')
+let g:gitgutter_sign_modified = emoji#for('small_orange_diamond')
+let g:gitgutter_sign_removed = emoji#for('small_red_triangle')
+let g:gitgutter_sign_modified_removed = emoji#for('collision')
 set pastetoggle=<F3>
 set clipboard=unnamed
 let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }

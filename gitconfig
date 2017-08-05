@@ -1,0 +1,18 @@
+[user]
+	email = dpn@dpn.name
+	name = David P. Novakovic
+	signingkey = 7A86EEEC0EF0A90E
+[commit]
+	gpgsign = true
+[alias]
+	d = difftool
+[merge]
+  tool = vimdiff
+[mergetool]
+  prompt = true
+[mergetool "vimdiff"]
+  cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+[difftool]
+  prompt = false
+[diff]
+  tool = vimdiff

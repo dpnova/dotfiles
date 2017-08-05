@@ -61,6 +61,9 @@ main = do
 		avoidStruts (spacing 5 $ Mirror (Tall 1 (3/100) (1/2))) |||
 	    	avoidStruts (spacing 5 $ Tall 1 (3/100) (1/2)) |||
 		avoidStruts (spacing 5 $ reflectHoriz (Tall 1 (3/100) (1/2))) |||
+		avoidStruts Full ||| Grid |||
+		-- (magnifiercz' 1.8 $ avoidStruts Grid) |||
+		avoidStruts (spacing 5 $ reflectVert (Mirror (Tall 1 (3/100) (1/2)))) |||
 		avoidStruts Full |||
 		(magnifiercz' 1.2 $ avoidStruts Grid) |||
 		avoidStruts (spacing 5 $ reflectVert (Mirror (Tall 1 (3/100) (1/2)))) |||
