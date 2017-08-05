@@ -1,4 +1,7 @@
 HERE=`pwd`
+sudo apt install zsh -y
+chsh dpn -s `which zsh`
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 mkdir -p ~/.vimrc/colors
 cd ~/.vimrc/colors
 wget https://raw.githubusercontent.com/sickill/vim-monokai/master/colors/monokai.vim
