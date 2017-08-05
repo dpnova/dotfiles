@@ -11,4 +11,4 @@ wget https://github.com/BurntSushi/ripgrep/releases/download/0.5.2/ripgrep-0.5.2
 tar xvzf ripgrep*
 mkdir ~/bin
 cp ripgrep-0.5.2-x86_64-unknown-linux-musl/rg ~/bin
-
+# something
