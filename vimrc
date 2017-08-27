@@ -2,13 +2,11 @@ set nocompatible              " be iMproved, required
 set encoding=utf8
 set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ 11
 set background=dark
-let g:solarized_termcolors=256
-let g:solarized_bold=1
-let g:solarized_underline=1
-let g:solarized_italic=1
+set guicursor=
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'ElmCast/elm-vim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -57,7 +55,7 @@ imap <C-@> <C-Space>
 
 
 map <C-n> :NERDTreeToggle<CR>
-map <C-m> :NERDTreeFind<CR>
+" map <C-m> :NERDTreeFind<CR>
 map <C-p> :Files<CR>
 set nu
 set omnifunc=syntaxcomplete#Complete
@@ -72,6 +70,7 @@ let g:airline_powerline_fonts = 1
 set laststatus=2
 
 " Use 256 colours (Use this setting only if your terminal supports 256 colours)
+
 set t_Co=256
 
 set history=100
@@ -102,8 +101,8 @@ let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
 set updatetime=250
 
 " sudo apt-get install ttf-ancient-fonts
-" let g:gitgutter_sign_added = emoji#for('small_blue_diamond')
-" let g:gitgutter_sign_modified = emoji#for('small_orange_diamond')
-" let g:gitgutter_sign_removed = emoji#for('small_red_triangle')
-" let g:gitgutter_sign_modified_removed = emoji#for('collision')
+let g:gitgutter_sign_added = emoji#for('small_blue_diamond')
+let g:gitgutter_sign_modified = emoji#for('small_orange_diamond')
+let g:gitgutter_sign_removed = emoji#for('small_red_triangle')
+let g:gitgutter_sign_modified_removed = emoji#for('collision')
 let ensime_server_v2=1

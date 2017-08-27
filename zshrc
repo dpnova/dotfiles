@@ -93,14 +93,15 @@ export PATH=$PATH:/home/dpn/bin
 alias cb=git_current_branch
 
 
-export BROWSER="google-chrome-stable %s"
+export BROWSER="google-chrome %s"
 #export TERM=screen-256color
 export TERM=xterm-256color
+#export TERM=linux
 export EDITOR=vim
 export WORKON_HOME=~/.virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh
-#xset m 20/10 10 r rate 280 22 b on
-alias vim=nvim
+# xset m 20/10 10 r rate 280 22 b on
+# alias vim=nvim
 # Use vim cli mode
 bindkey '^P' up-history
 bindkey '^N' down-history
@@ -123,6 +124,7 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*" --glob
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
         source /etc/profile.d/vte.sh
 fi
-exec xset m 20/10 10 r rate 280 22 b on &
 export PATH="$HOME/.nodenv/bin:$PATH"
 export PATH="./node_modules/.bin:$PATH"
+alias chromium-browser="chromium-browser --force-device-scale-factor=2"
+ export PATH=~/.npm-global/bin:$PATH
