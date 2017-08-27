@@ -9,6 +9,7 @@ let g:solarized_italic=1
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'fatih/vim-hclfmt'
 Plug 'junegunn/vim-peekaboo'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
