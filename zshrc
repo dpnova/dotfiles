@@ -127,3 +127,4 @@ exec xset m 20/10 10 r rate 280 22 b on &
 export PATH="$HOME/.nodenv/bin:$PATH"
 export PATH="./node_modules/.bin:$PATH"
 export GOPATH=~/gocode
+export PATH=$PATH:/home/dpn/.npm-path/bin

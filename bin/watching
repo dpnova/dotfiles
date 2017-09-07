@@ -1,0 +1,2 @@
+#!/bin/bash
+while true; do inotifywait -e modify -e create -e close -q --format "%w" $1; sleep 2; done
