@@ -6,7 +6,9 @@ set guicursor=
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'fisadev/vim-isort'
 Plug 'ElmCast/elm-vim'
+Plug 'fatih/vim-hclfmt'
 Plug 'junegunn/vim-peekaboo'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -77,7 +79,7 @@ set history=100
 syntax enable
 colorscheme monokai
 "colorscheme solarized
-let NERDTreeIgnore = ['\.pyc$']
+let NERDTreeIgnore = ['\.pyc$', '__pycache__']
 
 " remove trailing whitespace
 autocmd BufWritePre * %s/\s\+$//e
@@ -106,3 +108,6 @@ let g:gitgutter_sign_modified = emoji#for('small_orange_diamond')
 let g:gitgutter_sign_removed = emoji#for('small_red_triangle')
 let g:gitgutter_sign_modified_removed = emoji#for('collision')
 let ensime_server_v2=1
+
+" let g:vim_isort_python_version = 'python3'
+

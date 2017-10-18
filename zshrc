@@ -51,7 +51,7 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(sbt git scala python virtualenv virtualenvwrapper docker-compose)
+plugins=(sbt git scala python docker-compose virtualenv)# virtualenvwrapper)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -88,7 +88,7 @@ export KEYTIMEOUT=1
 powerline-daemon -q
 . /usr/local/lib/python2.7/dist-packages/powerline/bindings/zsh/powerline.zsh
 
-export PATH=$PATH:/home/dpn/bin
+export PATH=$PATH:/home/dpn/bin:/home/dpn/gocode/bin
 
 alias cb=git_current_branch
 
@@ -127,4 +127,6 @@ fi
 export PATH="$HOME/.nodenv/bin:$PATH"
 export PATH="./node_modules/.bin:$PATH"
 alias chromium-browser="chromium-browser --force-device-scale-factor=2"
- export PATH=~/.npm-global/bin:$PATH
+export PATH=~/.npm-global/bin:$PATH
+export PATH=/home/dpn/.local/bin:$PATH
+export GOPATH=~/gocode

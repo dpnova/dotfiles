@@ -61,7 +61,8 @@ main = do
 		avoidStruts (spacing 5 $ Mirror (Tall 1 (3/100) (1/2))) |||
 	    	avoidStruts (spacing 5 $ Tall 1 (3/100) (1/2)) |||
 		avoidStruts (spacing 5 $ reflectHoriz (Tall 1 (3/100) (1/2))) |||
-		avoidStruts Full ||| Grid |||
+		avoidStruts Full |||
+		Grid |||
 		-- (magnifiercz' 1.8 $ avoidStruts Grid) |||
 		avoidStruts (spacing 5 $ reflectVert (Mirror (Tall 1 (3/100) (1/2)))) |||
 		avoidStruts Full |||
@@ -142,7 +143,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- mod-{w,e,r} %! Switch to physical/Xinerama screens 1, 2, or 3
     -- mod-shift-{w,e,r} %! Move client to screen 1, 2, or 3
     [((m .|. modMask, key), screenWorkspace sc >>= flip whenJust (windows . f))
-        | (key, sc) <- zip [xK_e, xK_w, xK_r, xK_d] [0..]
+        | (key, sc) <- zip [xK_w, xK_e, xK_r, xK_d] [0..]
         , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
 help :: String

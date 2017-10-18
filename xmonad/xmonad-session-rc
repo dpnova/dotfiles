@@ -2,5 +2,4 @@ exec lxpanel &
 exec nm-applet &
 exec xfce4-power-manager &
 exec unclutter -idle 2 &
-exec polychromatic-tray-applet &
 exec xset m 20/10 10 r rate 280 22 b on &
