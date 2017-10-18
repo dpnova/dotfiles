@@ -130,3 +130,4 @@ alias chromium-browser="chromium-browser --force-device-scale-factor=2"
 export PATH=~/.npm-global/bin:$PATH
 export PATH=/home/dpn/.local/bin:$PATH
 export GOPATH=~/gocode
+export PATH=$PATH:/home/dpn/.npm-path/bin

@@ -6,8 +6,11 @@ set guicursor=
 
 call plug#begin('~/.vim/plugged')
 
+<<<<<<< HEAD
 Plug 'fisadev/vim-isort'
 Plug 'ElmCast/elm-vim'
+Plug 'elmcast/elm-vim'
+Plug 'fisadev/vim-isort'
 Plug 'fatih/vim-hclfmt'
 Plug 'junegunn/vim-peekaboo'
 Plug 'tpope/vim-fugitive'
@@ -20,7 +23,7 @@ Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'derekwyatt/vim-scala'
 Plug 'vim-syntastic/syntastic'
-Plug 'ensime/ensime-vim'
+Plug 'ensime/ensime-vim', {'for': 'scala'}
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'sickill/vim-monokai'
 Plug 'davidhalter/jedi'
@@ -57,6 +60,7 @@ imap <C-@> <C-Space>
 
 
 map <C-n> :NERDTreeToggle<CR>
+map <C-i> :!isort %<CR>:e<CR>
 " map <C-m> :NERDTreeFind<CR>
 map <C-p> :Files<CR>
 set nu
