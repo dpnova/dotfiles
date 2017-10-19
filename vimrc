@@ -6,7 +6,6 @@ set guicursor=
 
 call plug#begin('~/.vim/plugged')
 
-<<<<<<< HEAD
 Plug 'fisadev/vim-isort'
 Plug 'ElmCast/elm-vim'
 Plug 'elmcast/elm-vim'
