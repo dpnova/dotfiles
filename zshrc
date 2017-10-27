@@ -10,6 +10,7 @@ export ZSH=/home/dpn/.oh-my-zsh
 #ZSH_THEME="robbyrussell"
 ZSH_THEME="random"
 #ZSH_THEME="refined"
+#ZSH_THEME="bureau"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
