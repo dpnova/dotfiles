@@ -7,7 +7,9 @@ export ZSH=/home/dpn/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+#ZSH_THEME="robbyrussell"
+ZSH_THEME="random"
+#ZSH_THEME="refined"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -85,8 +87,6 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 bindkey -v
 export KEYTIMEOUT=1
-powerline-daemon -q
-. /usr/local/lib/python2.7/dist-packages/powerline/bindings/zsh/powerline.zsh
 
 export PATH=$PATH:/home/dpn/bin:/home/dpn/gocode/bin
 
@@ -121,13 +121,14 @@ bindkey '^r' history-incremental-search-backward
 
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*" --glob "!target/*"'
 
-if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
-        source /etc/profile.d/vte.sh
-fi
+# if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+#         source /etc/profile.d/vte.sh
+# fi
 export PATH="$HOME/.nodenv/bin:$PATH"
 export PATH="./node_modules/.bin:$PATH"
-alias chromium-browser="chromium-browser --force-device-scale-factor=2"
 export PATH=~/.npm-global/bin:$PATH
 export PATH=/home/dpn/.local/bin:$PATH
 export GOPATH=~/gocode
 export PATH=$PATH:/home/dpn/.npm-path/bin
+alias vim=~dpn/apps/nvim.appimage
+
