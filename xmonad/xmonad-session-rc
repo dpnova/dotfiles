@@ -1,5 +1,6 @@
-exec lxpanel &
 exec nm-applet &
 exec xfce4-power-manager &
 exec unclutter -idle 2 &
 exec xset m 20/10 10 r rate 280 22 b on &
+exec xsetroot -cursor_name left_ptr &
+exec ~/.screenlayout/dpn.sh &

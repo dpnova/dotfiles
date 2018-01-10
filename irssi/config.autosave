@@ -64,6 +64,7 @@ servers = (
     use_ssl = "yes";
     ssl_verify = "no";
     autoconnect = "yes";
+    ident = "d";
   }
 );
 
@@ -143,7 +144,7 @@ chatnets = {
     max_whois = "1";
   };
   dpn_freenode = { type = "IRC"; };
-  bcc_slack = { type = "IRC"; user = "d"; nick = "d"; };
+  bcc_slack = { type = "IRC"; };
 };
 
 channels = (
@@ -358,6 +359,7 @@ statusbar = {
         window = { };
         window_empty = { };
         lag = { priority = "-1"; };
+        act = { priority = "10"; };
         more = { priority = "-1"; alignment = "right"; };
         barend = { priority = "100"; alignment = "right"; };
       };
@@ -414,13 +416,6 @@ statusbar = {
         barend = { priority = "100"; alignment = "right"; };
       };
     };
-    awl_1 = {
-      items = {
-        barstart = { priority = "100"; };
-        awl_1 = { };
-        barend = { priority = "100"; alignment = "right"; };
-      };
-    };
   };
 };
 settings = {
@@ -430,10 +425,5 @@ settings = {
     nick = "dpn";
   };
   "fe-text" = { actlist_sort = "refnum"; };
-  "perl/core/scripts" = {
-    awl_display_key = "[$N$H$C$S]";
-    awl_separator = "=";
-  };
-  "fe-common/core" = { theme = "xchat"; };
 };
 logs = { };

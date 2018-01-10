@@ -54,7 +54,7 @@ main = do
             workspaces = myWorkspaces,
             focusFollowsMouse = True,
             focusedBorderColor = "#f92672",
-	    terminal = "lxterminal",
+	    terminal = "tilix",
             manageHook = (composeAll [manageDocks, className =? "Xfce4-notifyd" --> doIgnore]) <+> manageHook xfceConfig,
             startupHook = setWMName "LG3D",
             layoutHook = showWName $

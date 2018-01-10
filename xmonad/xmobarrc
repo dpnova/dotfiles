@@ -17,5 +17,5 @@ Config { font = "xft:Ubuntu Mono:size=11:bold:antialias=true"
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader% }{ <fc=#f92672>[</fc><fc=#66d9ef>%music%</fc><fc=#f92672>] |</fc> <fc=#f92672>[</fc>%cpu% <fc=#f92672>|</fc> %dynnetwork% <fc=#f92672>|</fc> Disk: %diskio% <fc=#f92672>|</fc> %memory% * %swap% <fc=#f92672>|</fc> %top%<fc=#f92672>]</fc> <fc=#f92672>|</fc> <fc=#f92672>[</fc> NYC: <fc=#fd971f>%nyTime%</fc> | <fc=#fd971f>%date%</fc> <fc=#f92672>|</fc>%YBCG%<fc=#f92672>]</fc>   "
+       , template = "%StdinReader% }{ <fc=#f92672>[</fc><fc=#66d9ef>%music%</fc><fc=#f92672>] |</fc> <fc=#f92672>[</fc>%cpu% <fc=#f92672>|</fc> %dynnetwork% <fc=#f92672>|</fc> Disk: %diskio% <fc=#f92672>|</fc> %memory% * %swap% <fc=#f92672>|</fc> %top%<fc=#f92672>]</fc> <fc=#f92672>| [</fc> <fc=#fd971f>%date%</fc> <fc=#f92672>|</fc>%YBCG%<fc=#f92672>]</fc>   "
        }
