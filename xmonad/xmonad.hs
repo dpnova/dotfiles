@@ -54,7 +54,7 @@ main = do
             workspaces = myWorkspaces,
             focusFollowsMouse = True,
             focusedBorderColor = "#f92672",
-	    terminal = "lxterminal",
+	    terminal = "gnome-terminal",
             manageHook = (composeAll [manageDocks, className =? "Xfce4-notifyd" --> doIgnore]) <+> manageHook xfceConfig,
             startupHook = setWMName "LG3D",
             layoutHook = showWName $
@@ -72,8 +72,8 @@ main = do
 		layoutHook defaultConfig
         } `additionalKeys`
         [ ((0, xK_Scroll_Lock), spawn "dm-tool lock")
-        , ((0, xF86XK_Tools), spawn "/usr/bin/pcmanfm")
-        , ((0, xF86XK_Launch5), spawn "/usr/bin/pcmanfm")
+        , ((0, xF86XK_Tools), spawn "/usr/bin/nautilus")
+        , ((0, xF86XK_Launch5), spawn "/usr/bin/nautilus")
         , ((controlMask, xK_Print), spawn "sleep 0.2; shutter -f")
         , ((0, xK_Print), spawn "shutter -s")
         , ((0, xF86XK_AudioPlay), spawn "playerctl play-pause")
