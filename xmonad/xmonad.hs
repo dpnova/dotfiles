@@ -4,7 +4,7 @@ import XMonad.Hooks.SetWMName
 import XMonad.Hooks.ManageDocks
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
-import XMonad.Config.Xfce
+import XMonad.Config.Desktop
 import XMonad.Hooks.ManageHelpers
 import Graphics.X11.ExtraTypes.XF86
 import System.IO
@@ -37,25 +37,56 @@ import Graphics.X11.Xlib
 import Graphics.X11.Xlib.Extras
 
 import XMonad.Hooks.EwmhDesktops
+import XMonad.Hooks.FadeInactive
+
 
 curLayout :: X String
 curLayout = gets windowset >>= return . description . W.layout . W.workspace . W.current
 
 myWorkspaces = ["1:dev","2:dev-extra","3:comms","4:monitoring","5:email","6:casting","7","8:tunes","9:hide"]
+myXmonadBar = "dzen2 -e 'button2=;' -dock -x '0' -y '0' -h '24' -w '1960' -ta 'l' -fg '#FFFFFF' -bg '#1B1D1E'"
+myStatusBar = "conky -c /home/dpn/.xmonad/.conky_dzen | dzen2 -e 'button2=;' -x '1960' -w '600' -h '24' -ta 'r' -bg '#1B1D1E' -fg '#FFFFFF' -y '0'"
+myBitmapsDir = "/home/dpn/.xmonad/dzen2"
+
+myLogHook :: Handle -> X ()
+myLogHook h = dynamicLogWithPP $ defaultPP
+    {
+        ppCurrent           =   dzenColor "#ebac54" "#1B1D1E" . pad
+      , ppVisible           =   dzenColor "white" "#1B1D1E" . pad
+      , ppHidden            =   dzenColor "white" "#1B1D1E" . pad
+      , ppHiddenNoWindows   =   dzenColor "#7b7b7b" "#1B1D1E" . pad
+      , ppUrgent            =   dzenColor "#ff0000" "#1B1D1E" . pad
+      , ppWsSep             =   " "
+      , ppSep               =   "  |  "
+      , ppLayout            =   dzenColor "#ebac54" "#1B1D1E" .
+                                (\x -> case x of
+                                    "ResizableTall"             ->      "^i(" ++ myBitmapsDir ++ "/tall.xbm)"
+                                    "Mirror ResizableTall"      ->      "^i(" ++ myBitmapsDir ++ "/mtall.xbm)"
+                                    "Full"                      ->      "^i(" ++ myBitmapsDir ++ "/full.xbm)"
+                                    "Simple Float"              ->      "~"
+                                    _                           ->      x
+                                )
+      , ppTitle             =   (" " ++) . dzenColor "white" "#1B1D1E" . dzenEscape
+      , ppOutput            =   hPutStrLn h
+    }
 
 main = do
-    xmproc <- spawnPipe "/usr/bin/xmobar /home/dpn/.xmonad/xmobarrc"
-    xmonad $ ewmh xfceConfig
-        {
+    -- xmproc <- spawnPipe "/usr/bin/xmobar /home/dpn/.xmonad/xmobarrc"
+    xmproc <- spawnPipe myXmonadBar
+    dzenRight <- spawnPipe myStatusBar
+    dConfig <- dzen desktopConfig
+    xmonad $ docks
+        def{
             keys = myKeys,
-            logHook = dynamicLogWithPP xmobarPP
-                        { ppOutput = hPutStrLn xmproc, ppTitle = xmobarColor "green" "" . shorten 50 },
+            logHook = myLogHook xmproc  >> fadeInactiveLogHook 0xdddddddd,
+            --logHook = dynamicLogWithPP xmobarPP
+            --            { ppOutput = hPutStrLn xmproc, ppTitle = xmobarColor "green" "" . shorten 50 },
             borderWidth = 6,
             workspaces = myWorkspaces,
             focusFollowsMouse = True,
             focusedBorderColor = "#f92672",
-	    terminal = "tilix",
-            manageHook = (composeAll [manageDocks, className =? "Xfce4-notifyd" --> doIgnore]) <+> manageHook xfceConfig,
+	    terminal = "gnome-terminal",
+            manageHook = manageDocks <+> manageHook dConfig,
             startupHook = setWMName "LG3D",
             layoutHook = showWName $
 		avoidStruts (spacing 5 $ Mirror (Tall 1 (3/100) (1/2))) |||
@@ -71,7 +102,7 @@ main = do
 		OneBig (0.5) (0.5) |||
 		layoutHook defaultConfig
         } `additionalKeys`
-        [ ((0, xK_Scroll_Lock), spawn "dm-tool lock")
+        [ ((0, xK_Scroll_Lock), spawn "gnome-screensaver-command -l")
         , ((0, xF86XK_Tools), spawn "/usr/bin/pcmanfm")
         , ((0, xF86XK_Launch5), spawn "/usr/bin/pcmanfm")
         , ((controlMask, xK_Print), spawn "sleep 0.2; shutter -f")
@@ -126,7 +157,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
     -- quit, or restart
     , ((modMask .|. shiftMask, xK_q     ), io (exitWith ExitSuccess)) -- %! Quit xmonad
-    , ((modMask              , xK_q     ), spawn "if type xmonad; then xmonad --recompile && xmonad --restart; else xmessage xmonad not in \\$PATH: \"$PATH\"; fi") -- %! Restart xmonad
+    , ((modMask              , xK_q     ), spawn "killall conky dzen;if type xmonad; then xmonad --recompile && xmonad --restart; else xmessage xmonad not in \\$PATH: \"$PATH\"; fi") -- %! Restart xmonad
 
     , ((modMask .|. shiftMask, xK_slash ), spawn ("echo \"" ++ help ++ "\" | xmessage -file -")) -- %! Run xmessage with a summary of the default keybindings (useful for beginners)
     -- repeat the binding for non-American layout keyboards

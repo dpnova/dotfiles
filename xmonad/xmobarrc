@@ -1,11 +1,11 @@
-Config { font = "xft:Ubuntu Mono:size=11:bold:antialias=true"
+Config { font = "xft:Droid Sans Mono for Powerline Plus Nerd File Types:size=10:antialias=true"
        , bgColor = "black"
        , fgColor = "grey"
        , position = Static { xpos = 0, ypos = 0, width = 2560, height = 15}
        , commands = [ Run Weather "YBCG" ["-t"," <tempC>C","-L","15","-H","28","--normal","green","--high","red","--low","lightblue"] 36000
 --                    , Run MultiCpu ["-L","3","-H","50","--normal","green","--high","red", "-t", "CPU: <autototal>"] 10
                     , Run Cpu ["-L","3","-H","50","--normal","green","--high","red", "-t", "CPU: <total>"] 10
-                    , Run Memory ["-t","Mem: <usedratio>%"] 10
+                    , Run Memory ["-t","Mem:  <usedratio>%"] 10
                     , Run Swap [] 10
                     , Run Date "%a %b %_d %l:%M" "date" 10
                     , Run DateZone "%a %H:%M" "en_US.UTF-8" "America/New_York" "nyTime" 10
