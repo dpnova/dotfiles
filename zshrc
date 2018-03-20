@@ -8,9 +8,20 @@ export ZSH=/home/dpn/.oh-my-zsh
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 #ZSH_THEME="robbyrussell"
-ZSH_THEME="random"
+#ZSH_THEME="random"
+ZSH_THEME="dpoggi"
+# takashiyoshida
+# muse
 #ZSH_THEME="refined"
+#ZSH_THEME="kennethreitz"
+#ZSH_THEME="zhann"
+#ZSH_THEME="af-magic"
 #ZSH_THEME="bureau"
+#tjkirch_mod
+## steeef
+## tjkirch
+#dogenpunk
+#ZSH_THEME="sorin"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -94,12 +105,14 @@ export PATH=$PATH:/home/dpn/bin:/home/dpn/gocode/bin
 alias cb=git_current_branch
 
 
-export BROWSER="google-chrome %s"
+#export BROWSER="google-chrome %s"
+export BROWSER="brave %s"
 #export TERM=screen-256color
 export TERM=xterm-256color
 #export TERM=linux
 export EDITOR=vim
 export WORKON_HOME=~/.virtualenvs
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3.6
 source /usr/local/bin/virtualenvwrapper.sh
 # xset m 20/10 10 r rate 280 22 b on
 # alias vim=nvim
@@ -120,16 +133,17 @@ bindkey '^r' history-incremental-search-backward
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*" --glob "!target/*"'
+#export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*" --glob "!target/*"'
+export FZF_DEFAULT_COMMAND='fd --type f'
 
-# if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
-#         source /etc/profile.d/vte.sh
-# fi
 export PATH="$HOME/.nodenv/bin:$PATH"
 export PATH="./node_modules/.bin:$PATH"
 export PATH=~/.npm-global/bin:$PATH
 export PATH=/home/dpn/.local/bin:$PATH
 export GOPATH=~/gocode
 export PATH=$PATH:/home/dpn/.npm-path/bin
-alias vim=~dpn/apps/nvim.appimage
+#alias vim=~dpn/apps/nvim.appimage
+#if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+#        source /etc/profile.d/vte.sh
+#fi
 

@@ -55,6 +55,16 @@ servers = (
     ssl_verify = "no";
     autoconnect = "yes";
     ident = "dpn_freenode";
+  },
+  {
+    address = "blockchainclub.irc.slack.com";
+    chatnet = "bcc_slack";
+    port = "6667";
+    password = "blockchainclub.WJ0PoeVs7whpblKs7bkS";
+    use_ssl = "yes";
+    ssl_verify = "no";
+    autoconnect = "yes";
+    ident = "d";
   }
 );
 
@@ -134,6 +144,7 @@ chatnets = {
     max_whois = "1";
   };
   dpn_freenode = { type = "IRC"; };
+  bcc_slack = { type = "IRC"; };
 };
 
 channels = (
@@ -348,6 +359,7 @@ statusbar = {
         window = { };
         window_empty = { };
         lag = { priority = "-1"; };
+        act = { priority = "10"; };
         more = { priority = "-1"; alignment = "right"; };
         barend = { priority = "100"; alignment = "right"; };
       };
@@ -397,6 +409,13 @@ statusbar = {
         topicbarend = { priority = "100"; alignment = "right"; };
       };
     };
+    awl_0 = {
+      items = {
+        barstart = { priority = "100"; };
+        awl_0 = { };
+        barend = { priority = "100"; alignment = "right"; };
+      };
+    };
   };
 };
 settings = {
@@ -406,10 +425,5 @@ settings = {
     nick = "dpn";
   };
   "fe-text" = { actlist_sort = "refnum"; };
-  "perl/core/scripts" = {
-    awl_display_key = "[$N$H$C$S]";
-    awl_separator = "=";
-  };
-  "fe-common/core" = { theme = "xchat"; };
 };
 logs = { };

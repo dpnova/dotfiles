@@ -1,7 +1,7 @@
-Config { font = "xft:Ubuntu Mono:size=11:bold:antialias=true"
+Config { font = "xft:Droid Sans:size=11:antialias=true"
        , bgColor = "black"
        , fgColor = "grey"
-       , position = Static { xpos = 0, ypos = 0, width = 2560, height = 15}
+       , position = Static { xpos = 0, ypos = 0, width = 1740, height = 30}
        , commands = [ Run Weather "YBCG" ["-t"," <tempC>C","-L","15","-H","28","--normal","green","--high","red","--low","lightblue"] 36000
 --                    , Run MultiCpu ["-L","3","-H","50","--normal","green","--high","red", "-t", "CPU: <autototal>"] 10
                     , Run Cpu ["-L","3","-H","50","--normal","green","--high","red", "-t", "CPU: <total>"] 10
@@ -14,8 +14,9 @@ Config { font = "xft:Ubuntu Mono:size=11:bold:antialias=true"
                     , Run Com ".xmonad/playerstatus" [] "music" 10
                     , Run DynNetwork ["-m", "3"] 10
                     , Run TopProc ["-m", "10"] 5
+		    , Run CommandReader "/usr/local/bin/pymodoro" "pomodoro"
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader% }{ <fc=#f92672>[</fc><fc=#66d9ef>%music%</fc><fc=#f92672>] |</fc> <fc=#f92672>[</fc>%cpu% <fc=#f92672>|</fc> %dynnetwork% <fc=#f92672>|</fc> Disk: %diskio% <fc=#f92672>|</fc> %memory% * %swap% <fc=#f92672>|</fc> %top%<fc=#f92672>]</fc> <fc=#f92672>|</fc> <fc=#f92672>[</fc> NYC: <fc=#fd971f>%nyTime%</fc> | <fc=#fd971f>%date%</fc> <fc=#f92672>|</fc>%YBCG%<fc=#f92672>]</fc>   "
+       , template = "%StdinReader% }{ <fc=#f92672>[</fc><fc=#66d9ef>%pomodoro%</fc><fc=#f92672>] |</fc> <fc=#f92672>[</fc><fc=#66d9ef>%music%</fc><fc=#f92672>] |</fc> <fc=#f92672>[</fc>%cpu% <fc=#f92672>|</fc> %dynnetwork% <fc=#f92672>|</fc> Disk: %diskio% <fc=#f92672>|</fc> %memory% * %swap% <fc=#f92672>|</fc> %top%<fc=#f92672>]</fc> <fc=#f92672>| [</fc> <fc=#fd971f>%date%</fc> <fc=#f92672>|</fc>%YBCG%<fc=#f92672>]</fc> "
        }

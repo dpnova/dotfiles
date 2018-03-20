@@ -63,6 +63,7 @@ main = do
 		avoidStruts (spacing 5 $ reflectHoriz (Tall 1 (3/100) (1/2))) |||
 		avoidStruts Full |||
 		Grid |||
+		avoidStruts (spacing 100 $ Grid) |||
 		-- (magnifiercz' 1.8 $ avoidStruts Grid) |||
 		avoidStruts (spacing 5 $ reflectVert (Mirror (Tall 1 (3/100) (1/2)))) |||
 		avoidStruts Full |||
@@ -71,7 +72,7 @@ main = do
 		OneBig (0.5) (0.5) |||
 		layoutHook defaultConfig
         } `additionalKeys`
-        [ ((0, xK_Scroll_Lock), spawn "dm-tool lock")
+        [ ((0, xK_Scroll_Lock), spawn "gnome-screensaver-command -l;xset +dpms dpms 600 1200 1800")
         , ((0, xF86XK_Tools), spawn "/usr/bin/nautilus")
         , ((0, xF86XK_Launch5), spawn "/usr/bin/nautilus")
         , ((controlMask, xK_Print), spawn "sleep 0.2; shutter -f")
@@ -94,9 +95,10 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask,               xK_p     ), spawn "dmenu_run -b") -- %! Launch dmenu
     , ((modMask .|. shiftMask, xK_p     ), spawn "gmrun") -- %! Launch gmrun
     , ((modMask .|. shiftMask, xK_c     ), kill) -- %! Close the focused window
+    , ((modMask, xK_b), spawn "touch ~/.pomodoro_session")
 
-    --    , ((modMask,               xK_space ), sendMessage NextLayout) -- %! Rotate through the available layout algorithms
-    , ((modMask, xK_space ), sendMessage NextLayout >> (curLayout >>= \d -> spawn $ "zenity --notification --text="++d))
+    , ((modMask,               xK_space ), sendMessage NextLayout) -- %! Rotate through the available layout algorithms
+    -- , ((modMask, xK_space ), sendMessage NextLayout >> (curLayout >>= \d -> spawn $ "zenity --notification --text="++d))
     , ((modMask .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf) -- %!  Reset the layouts on the current workspace to default
 
     , ((modMask,               xK_n     ), refresh) -- %! Resize viewed windows to the correct size

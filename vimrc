@@ -1,11 +1,13 @@
 set nocompatible              " be iMproved, required
 set encoding=utf8
-set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ 11
+" set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ 11
+set guifont=Ubuntu\ Mono\ derivative\ Powerline\ Plus\ Nerd\ File\ Types\ Mono\ Plus\ Font\ Awesome\ Plus\ Octicons\ 11
 set background=dark
 set guicursor=
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'tomlion/vim-solidity'
 Plug 'fisadev/vim-isort'
 Plug 'ElmCast/elm-vim'
 Plug 'elmcast/elm-vim'
