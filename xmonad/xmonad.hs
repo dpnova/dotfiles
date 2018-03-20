@@ -44,7 +44,7 @@ curLayout :: X String
 curLayout = gets windowset >>= return . description . W.layout . W.workspace . W.current
 
 myWorkspaces = ["1:dev","2:dev-extra","3:comms","4:monitoring","5:email","6:casting","7","8:tunes","9:hide"]
-myXmonadBar = "dzen2 -e 'button2=;' -dock -x '0' -y '0' -h '24' -w '1960' -ta 'l' -fg '#FFFFFF' -bg '#1B1D1E'"
+myXmonadBar = "dzen2 -e 'button2=;' -dock -x '0' -y '0' -h '24' -w '1920' -ta 'l' -fg '#FFFFFF' -bg '#1B1D1E'"
 myStatusBar = "conky -c /home/dpn/.xmonad/.conky_dzen | dzen2 -e 'button2=;' -x '1960' -w '600' -h '24' -ta 'r' -bg '#1B1D1E' -fg '#FFFFFF' -y '0'"
 myBitmapsDir = "/home/dpn/.xmonad/dzen2"
 
