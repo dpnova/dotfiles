@@ -1,3 +1,4 @@
+filetype plugin on
 set nocompatible              " be iMproved, required
 set encoding=utf8
 " set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ 11
@@ -38,7 +39,6 @@ Plug 'leafgarland/typescript-vim'
 call plug#end()
 
 let g:webdevicons_enable_nerdtree = 1
-filetype plugin indent on    " required
 nnoremap <localleader>t :EnTypeCheck<CR>
 nnoremap <localleader>T :EnInspectType<CR>
 nnoremap <localleader>p :EnShowPackage<CR>
