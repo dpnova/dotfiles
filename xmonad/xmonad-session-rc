@@ -8,4 +8,5 @@ exec feh --bg-scale ~/Pictures/wall2.jpg &
 exec stalonetray &
 exec xautolock -locker "gnome-screensaver-command -l" &
 exec xset +dpms dpms 600 1200 1800 &
+exec autorandr -cf &
 exec compton &
