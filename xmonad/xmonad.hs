@@ -38,7 +38,7 @@ import Graphics.X11.Xlib.Extras
 
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.FadeInactive
-
+import XMonad.Layout.Circle
 
 curLayout :: X String
 curLayout = gets windowset >>= return . description . W.layout . W.workspace . W.current
@@ -89,6 +89,7 @@ main = do
             manageHook = manageDocks <+> manageHook dConfig,
             startupHook = setWMName "LG3D",
             layoutHook = showWName $
+		Circle |||
 		avoidStruts (spacing 5 $ Mirror (Tall 1 (3/100) (1/2))) |||
 	    	avoidStruts (spacing 5 $ Tall 1 (3/100) (1/2)) |||
 		avoidStruts (spacing 5 $ reflectHoriz (Tall 1 (3/100) (1/2))) |||
@@ -114,6 +115,7 @@ main = do
         , ((0, xF86XK_AudioNext), spawn "playerctl next")
         , ((0, xF86XK_AudioRaiseVolume), spawn "pactl set-sink-volume alsa_output.pci-0000_00_1b.0.analog-stereo +5%")
         , ((0, xF86XK_AudioLowerVolume), spawn "pactl set-sink-volume alsa_output.pci-0000_00_1b.0.analog-stereo -5%")
+    	, ((0, 0xffc5), spawn "autorandr -cf")
         ]
 
 -- | The xmonad key bindings. Add, modify or remove key bindings here.
