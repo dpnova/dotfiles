@@ -43,9 +43,9 @@ import XMonad.Layout.Circle
 curLayout :: X String
 curLayout = gets windowset >>= return . description . W.layout . W.workspace . W.current
 
-myWorkspaces = ["1:dev","2:dev-extra","3:comms","4:monitoring","5:email","6:casting","7","8:tunes","9:hide"]
-myXmonadBar = "dzen2 -e 'button2=;' -dock -x '0' -y '0' -h '24' -w '1320' -ta 'l' -fg '#FFFFFF' -bg '#1B1D1E'"
-myStatusBar = "conky -c /home/dpn/.xmonad/.conky_dzen | dzen2 -e 'button2=;' -x '1320' -w '600' -h '24' -ta 'r' -bg '#1B1D1E' -fg '#FFFFFF' -y '0'"
+myWorkspaces = ["1:dev","2:browse","3:comm","4:monitor","5:email","6:cast","7","8:tunes","9:hide"]
+myXmonadBar = "dzen2 -e 'button2=;' -dock -x '0' -y '0' -h '24' -w '1100' -ta 'l' -fg '#FFFFFF' -bg '#1B1D1E'"
+myStatusBar = "conky -c /home/dpn/.xmonad/.conky_dzen | dzen2 -e 'button2=;' -x '1000' -w '720' -h '24' -ta 'r' -bg '#1B1D1E' -fg '#FFFFFF' -y '0'"
 myBitmapsDir = "/home/dpn/.xmonad/dzen2"
 
 myLogHook :: Handle -> X ()
@@ -89,7 +89,7 @@ main = do
             manageHook = manageDocks <+> manageHook dConfig,
             startupHook = setWMName "LG3D",
             layoutHook = showWName $
-		Circle |||
+	    	avoidStruts Circle |||
 		avoidStruts (spacing 5 $ Mirror (Tall 1 (3/100) (1/2))) |||
 	    	avoidStruts (spacing 5 $ Tall 1 (3/100) (1/2)) |||
 		avoidStruts (spacing 5 $ reflectHoriz (Tall 1 (3/100) (1/2))) |||

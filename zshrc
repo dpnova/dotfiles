@@ -65,7 +65,7 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(sbt git scala python docker-compose virtualenv)# virtualenvwrapper)
+plugins=(django sbt git scala python docker-compose virtualenv)# virtualenvwrapper)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -140,9 +140,10 @@ export PATH="$HOME/.nodenv/bin:$PATH"
 export PATH="./node_modules/.bin:$PATH"
 export PATH=~/.npm-global/bin:$PATH
 export PATH=/home/dpn/.local/bin:$PATH
+export PATH=/home/dpn/.cabal/bin:$PATH
 export GOPATH=~/gocode
 export PATH=$PATH:/home/dpn/.npm-path/bin
-#alias vim=~dpn/apps/nvim.appimage
+alias vim=~dpn/bin/nvim.appimage
 #if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
 #        source /etc/profile.d/vte.sh
 #fi

@@ -1,3 +1,4 @@
+filetype plugin on
 set nocompatible              " be iMproved, required
 set encoding=utf8
 " set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ 11
@@ -38,7 +39,6 @@ Plug 'leafgarland/typescript-vim'
 call plug#end()
 
 let g:webdevicons_enable_nerdtree = 1
-filetype plugin indent on    " required
 nnoremap <localleader>t :EnTypeCheck<CR>
 nnoremap <localleader>T :EnInspectType<CR>
 nnoremap <localleader>p :EnShowPackage<CR>
@@ -48,7 +48,9 @@ au FileType scala nnoremap <localleader>d :EnDeclarationSplit<CR>
 
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 autocmd Filetype json setlocal ts=2 sts=2 sw=2
-
+autocmd Filetype html setlocal ts=4 sts=4 sw=4 expandtab listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣ list
+autocmd Filetype htmldjango setlocal ts=4 sts=4 sw=4 expandtab listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣ list
+autocmd BufNewFile,BufRead *.tag set ft=html
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.class,.git,*.cache,target
 " Ctrl-Space for completions. Heck Yeah!

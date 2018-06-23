@@ -1,10 +1,11 @@
-exec nm-applet &
-exec stalonetray &
 exec unity-settings-daemon &
-exec autorandr change &
 exec unclutter -idle 2 &
 exec xsetroot -cursor_name left_ptr &
+exec nm-applet &
+exec blueman-applet &
+exec autorandr -cf &
 exec feh --bg-scale ~/Pictures/wall2.jpg &
+exec stalonetray &
 exec xautolock -locker "gnome-screensaver-command -l" &
 exec xset +dpms dpms 600 1200 1800 &
 exec autorandr -cf &
