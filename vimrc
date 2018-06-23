@@ -48,7 +48,9 @@ au FileType scala nnoremap <localleader>d :EnDeclarationSplit<CR>
 
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 autocmd Filetype json setlocal ts=2 sts=2 sw=2
-
+autocmd Filetype html setlocal ts=4 sts=4 sw=4 expandtab listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣ list
+autocmd Filetype htmldjango setlocal ts=4 sts=4 sw=4 expandtab listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣ list
+autocmd BufNewFile,BufRead *.tag set ft=html
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.class,.git,*.cache,target
 " Ctrl-Space for completions. Heck Yeah!
