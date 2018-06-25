@@ -90,19 +90,16 @@ main = do
             startupHook = setWMName "LG3D",
             layoutHook = showWName $
 	    	avoidStruts Circle |||
-		avoidStruts (spacing 5 $ Mirror (Tall 1 (3/100) (1/2))) |||
 	    	avoidStruts (spacing 5 $ Tall 1 (3/100) (1/2)) |||
-		avoidStruts (spacing 5 $ reflectHoriz (Tall 1 (3/100) (1/2))) |||
-		avoidStruts Full |||
-		Grid |||
+		-- Grid |||
 		avoidStruts (spacing 100 $ Grid) |||
 		-- (magnifiercz' 1.8 $ avoidStruts Grid) |||
-		avoidStruts (spacing 5 $ reflectVert (Mirror (Tall 1 (3/100) (1/2)))) |||
 		avoidStruts Full |||
-		(magnifiercz' 1.2 $ avoidStruts Grid) |||
-		avoidStruts (spacing 5 $ reflectVert (Mirror (Tall 1 (3/100) (1/2)))) |||
 		OneBig (0.5) (0.5) |||
-		layoutHook defaultConfig
+		avoidStruts (spacing 5 $ Mirror (Tall 1 (3/100) (1/2))) |||
+		avoidStruts (spacing 5 $ reflectHoriz (Tall 1 (3/100) (1/2))) |||
+		avoidStruts (spacing 5 $ reflectVert (Mirror (Tall 1 (3/100) (1/2)))) |||
+		avoidStruts (spacing 5 $ reflectVert (Mirror (Tall 1 (3/100) (1/2))))
         } `additionalKeys`
         [ ((0, xK_Scroll_Lock), spawn "gnome-screensaver-command -l;xset +dpms dpms 600 1200 1800")
         , ((0, xF86XK_Tools), spawn "/usr/bin/nautilus")
