@@ -143,8 +143,9 @@ export PATH=/home/dpn/.local/bin:$PATH
 export PATH=/home/dpn/.cabal/bin:$PATH
 export GOPATH=~/gocode
 export PATH=$PATH:/home/dpn/.npm-path/bin
-alias vim=~dpn/bin/nvim.appimage
+#alias vim=~dpn/bin/nvim.appimage
 #if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
 #        source /etc/profile.d/vte.sh
 #fi
 
+export P4COLORS="@info=0:@error=31;1:@warning=33;1:action=36:how:36:change=33:depotFile=32:path=32:location=32:rev=31:depotRev=31"

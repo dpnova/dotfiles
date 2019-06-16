@@ -23,9 +23,9 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
-Plug 'derekwyatt/vim-scala'
+" Plug 'derekwyatt/vim-scala'
 Plug 'vim-syntastic/syntastic'
-Plug 'ensime/ensime-vim', {'for': 'scala'}
+" Plug 'ensime/ensime-vim', {'for': 'scala'}
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'sickill/vim-monokai'
 Plug 'davidhalter/jedi'
