@@ -1,0 +1,73 @@
+" ============================================================================
+" Settings
+" ============================================================================
+
+set gdefault
+set surround
+set number
+set ignorecase
+
+let mapleader = ","
+set clipboard+=unnamed
+
+" ============================================================================
+" Movement
+" ============================================================================
+
+" In insert mode
+inoremap <C-h> <C-o>h
+inoremap <C-l> <C-o>a
+inoremap <C-j> <C-o>j
+inoremap <C-k> <C-o>k
+inoremap <C-^> <C-o><C-^>
+
+" window
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
+
+" ============================================================================
+" Editing
+" ============================================================================
+
+" Make Y behave like other capitals
+nnoremap Y y$
+
+" ============================================================================
+" Intellij things
+" ============================================================================
+
+nmap Q          :action CloseAllEditorsButActive<CR>
+
+nmap <leader>a  :action $SelectAll<CR>
+nmap <leader>b  :action GotoDeclaration<CR>
+" nmap <leader>c  :action CompileDirty<CR>
+" nmap <leader>C  :action CompileProject<CR>
+nmap <leader>c  :action com.twitter.intellij.pants.compiler.actions.PantsCompileCurrentTargetAction<CR>
+nmap <leader>C  :action com.twitter.intellij.pants.compiler.actions.PantsCompileAllTargetsAction<CR>
+nmap <leader>d  :action EditorDuplicate<CR>
+nmap <leader>e  :action RecentFiles<CR>
+nmap <leader>ff :action Find<CR>
+nmap <leader>fr :action Replace<CR>
+nmap <leader>g  :action GotoLine<CR>
+nmap <leader>h  :action TypeHierarchy<CR>
+nmap <leader>i  :action ImplementMethods<CR>
+nmap <leader>m  :action EditorScrollToCenter<CR>
+nmap <leader>n  :action NextOccurence<CR>
+nmap <leader>o  :action OverrideMethods<CR>
+nmap <leader>p  :action ParameterInfo<CR>
+nmap <leader>q  :action QuickJavaDoc<CR>
+nmap <leader>r  :action RerunFailedTests<CR>
+nmap <leader>R  :action Run<CR>
+nmap <leader>s  :action SaveAll<CR>
+nmap <leader>t  :action Scala.TypeInfo<CR>
+nmap <leader>T  :action ExpressionTypeInfo<CR>
+nmap <leader>u  :action GotoSuperMethod<CR>
+nmap <leader>vc :source ~/.ideavimrc<CR>
+nmap <leader>vp :action $Paste<CR>
+nmap <leader>w  :action EditorSelectWord<CR>
+nmap <leader>x  :action $Cut<CR>
+nmap <leader>y  :action EditorDeleteLine<CR>
+nmap <leader>[  :action EditorCodeBlockStart<CR>
+nmap <leader>]  :action EditorCodeBlockEnd<CR>"

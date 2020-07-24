@@ -1,12 +1,9 @@
-exec unity-settings-daemon &
-exec unclutter -idle 2 &
-exec xsetroot -cursor_name left_ptr &
-exec nm-applet &
-exec blueman-applet &
-exec autorandr -cf &
-exec feh --bg-scale ~/Pictures/wall2.jpg &
-exec stalonetray &
-exec xautolock -locker "gnome-screensaver-command -l" &
-exec xset +dpms dpms 600 1200 1800 &
-exec autorandr -cf &
-exec compton &
+autorandr -cf home && feh --bg-scale ~/Pictures/destiny-2-garden-of-salvation-e.jpg &
+stalonetray &
+unclutter -idle 2 &
+xsetroot -cursor_name left_ptr &
+blueman-applet &
+nm-applet &
+xautolock -locker "gnome-screensaver-command -l" &
+xset +dpms dpms 600 1200 1800 &
+compton --config ~/.config/compton.conf &

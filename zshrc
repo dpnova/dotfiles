@@ -9,7 +9,7 @@ export ZSH=/home/dpn/.oh-my-zsh
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 #ZSH_THEME="robbyrussell"
 #ZSH_THEME="random"
-ZSH_THEME="dpoggi"
+#ZSH_THEME="dpoggi"
 # takashiyoshida
 # muse
 #ZSH_THEME="refined"
@@ -22,6 +22,7 @@ ZSH_THEME="dpoggi"
 ## tjkirch
 #dogenpunk
 #ZSH_THEME="sorin"
+ZSH_THEME=dstufft
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -65,7 +66,7 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(django sbt git scala python docker-compose virtualenv)# virtualenvwrapper)
+plugins=(django sbt git scala python docker-compose virtualenvwrapper)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -148,4 +149,6 @@ export PATH=$PATH:/home/dpn/.npm-path/bin
 #        source /etc/profile.d/vte.sh
 #fi
 
-export P4COLORS="@info=0:@error=31;1:@warning=33;1:action=36:how:36:change=33:depotFile=32:path=32:location=32:rev=31:depotRev=31"
+#export P4COLORS="@info=0:@error=31;1:@warning=33;1:action=36:how:36:change=33:depotFile=32:path=32:location=32:rev=31:depotRev=31"
+autoload -Uz bp4o
+bp4o

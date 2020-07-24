@@ -42,10 +42,9 @@ import XMonad.Layout.Circle
 
 curLayout :: X String
 curLayout = gets windowset >>= return . description . W.layout . W.workspace . W.current
-
 myWorkspaces = ["1:dev","2:browse","3:comm","4:monitor","5:email","6:cast","7","8:tunes","9:hide"]
-myXmonadBar = "dzen2 -e 'button2=;' -dock -x '0' -y '0' -h '24' -w '1100' -ta 'l' -fg '#FFFFFF' -bg '#1B1D1E'"
-myStatusBar = "conky -c /home/dpn/.xmonad/.conky_dzen | dzen2 -e 'button2=;' -x '1000' -w '720' -h '24' -ta 'r' -bg '#1B1D1E' -fg '#FFFFFF' -y '0'"
+myXmonadBar = "dzen2 -p -e 'button2=;' -dock -x '111' -y '0' -h '32' -w '1700' -ta 'l'"
+myStatusBar = "conky -c /home/dpn/.xmonad/.conky_dzen | dzen2 -x '1800' -tw '760' -w '50' -h '32' -ta 'r' -y '0' -p"
 myBitmapsDir = "/home/dpn/.xmonad/dzen2"
 
 myLogHook :: Handle -> X ()
@@ -81,18 +80,18 @@ main = do
             logHook = myLogHook xmproc  >> fadeInactiveLogHook 0xdddddddd,
             --logHook = dynamicLogWithPP xmobarPP
             --            { ppOutput = hPutStrLn xmproc, ppTitle = xmobarColor "green" "" . shorten 50 },
-            borderWidth = 1,
+            borderWidth = 3,
             workspaces = myWorkspaces,
             focusFollowsMouse = True,
             focusedBorderColor = "#f92672",
-            terminal = "gnome-terminal",
+            terminal = "tilix",
             manageHook = manageDocks <+> manageHook dConfig,
             startupHook = setWMName "LG3D",
             layoutHook = showWName $
             avoidStruts Circle |||
             avoidStruts (spacing 5 $ Tall 1 (3/100) (1/2)) |||
             -- Grid |||
-            avoidStruts (spacing 100 $ Grid) |||
+            avoidStruts (spacing 10 $ Grid) |||
             -- (magnifiercz' 1.8 $ avoidStruts Grid) |||
             avoidStruts Full |||
             OneBig (0.5) (0.5) |||
