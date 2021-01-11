@@ -7,7 +7,11 @@ set background=dark
 set guicursor=
 
 call plug#begin('~/.vim/plugged')
-
+Plug 'neoclide/coc.nvim' , { 'branch' : 'release' }
+Plug 'pangloss/vim-javascript'    " JavaScript support
+Plug 'leafgarland/typescript-vim' " TypeScript syntax
+Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
+Plug 'jparise/vim-graphql'        " GraphQL syntax
 Plug 'sheerun/vim-polyglot'
 Plug 'tomlion/vim-solidity'
 Plug 'fisadev/vim-isort'
@@ -29,12 +33,12 @@ Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'sickill/vim-monokai'
 Plug 'w0rp/ale'
-Plug 'davidhalter/jedi'
-Plug 'davidhalter/jedi-vim'
+" Plug 'davidhalter/jedi'
+" Plug 'davidhalter/jedi-vim'
 Plug 'nvie/vim-flake8'
 Plug 'junegunn/vim-emoji'
 Plug 'ryanoasis/vim-devicons'
-Plug 'pangloss/vim-javascript'
+" Plug 'pangloss/vim-javascript'
 " Plug 'leafgarland/typescript-vim'
 
 call plug#end()
@@ -118,4 +122,6 @@ let g:gitgutter_sign_modified_removed = emoji#for('collision')
 let ensime_server_v2=1
 
 " let g:vim_isort_python_version = 'python3'
+
+let g:coc_global_extensions = [ 'coc-tsserver' ]
 

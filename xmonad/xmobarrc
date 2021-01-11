@@ -19,4 +19,5 @@ Config { font = "xft:Droid Sans Mono for Powerline Plus Nerd File Types:size=10:
        , sepChar = "%"
        , alignSep = "}{"
        , template = "%StdinReader% }{ <fc=#f92672>[</fc><fc=#66d9ef>%pomodoro%</fc><fc=#f92672>] |</fc> <fc=#f92672>[</fc><fc=#66d9ef>%music%</fc><fc=#f92672>] |</fc> <fc=#f92672>[</fc>%cpu% <fc=#f92672>|</fc> %dynnetwork% <fc=#f92672>|</fc> Disk: %diskio% <fc=#f92672>|</fc> %memory% * %swap% <fc=#f92672>|</fc> %top%<fc=#f92672>]</fc> <fc=#f92672>| [</fc> <fc=#fd971f>%date%</fc> <fc=#f92672>|</fc>%YBCG%<fc=#f92672>]</fc> "
+			 , allDesktops = True
        }

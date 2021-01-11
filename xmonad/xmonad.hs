@@ -14,6 +14,8 @@ import XMonad.Layout.Spacing
 import XMonad.Layout.ShowWName
 import XMonad.Layout.Reflect
 import XMonad.Layout.OneBig
+import XMonad.Layout.ThreeColumns
+import XMonad.Layout.Spiral
 import XMonad.Actions.CycleWindows
 import XMonad.Layout.Magnifier
 import qualified Data.Map as M
@@ -28,24 +30,36 @@ import qualified XMonad.Core as XMonad
 import XMonad.Layout
 import XMonad.Operations
 import XMonad.ManageHook
+import XMonad.Actions.CopyWindow
 import qualified XMonad.StackSet as W
 import Data.Bits ((.|.))
 import Data.Monoid
 import qualified Data.Map as M
 import System.Exit
 import Graphics.X11.Xlib
+import Data.Ratio
 import Graphics.X11.Xlib.Extras
 
 import XMonad.Hooks.EwmhDesktops
-import XMonad.Hooks.FadeInactive
+-- import XMonad.Hooks.FadeInactive
 import XMonad.Layout.Circle
 
 curLayout :: X String
 curLayout = gets windowset >>= return . description . W.layout . W.workspace . W.current
 myWorkspaces = ["1:dev","2:browse","3:comm","4:monitor","5:email","6:cast","7","8:tunes","9:hide"]
-myXmonadBar = "dzen2 -p -e 'button2=;' -dock -x '111' -y '0' -h '32' -w '1700' -ta 'l'"
+-- myXmonadBar = "dzen2 -p -e 'button2=;' -dock -x '111' -y '0' -h '32' -w '1200' -ta 'l'"
+
+myXmonadBar = "dzen2 -p -e 'button2=;' -dock -x '111' -y '0' -h '32' -w '1800' -ta 'l'"
+
 myStatusBar = "conky -c /home/dpn/.xmonad/.conky_dzen | dzen2 -x '1800' -tw '760' -w '50' -h '32' -ta 'r' -y '0' -p"
+
+-- conkyDesk = "bash /home/dpn/.conky/ssui/start.sh"
+-- myStatusBar = "conky -c /home/dpn/.xmonad/.conky_dzen | dzen2 -x '1200' -tw '720' -w '50' -h '32' -ta 'r' -y '0' -p"
+
+-- myStatusBar2 = "conky -c /home/dpn/.xmonad/.conky_dzen | dzen2 -x '2560' -tw '2560' -w '50' -h '32' -ta 'r' -y '0' -p"
+
 myBitmapsDir = "/home/dpn/.xmonad/dzen2"
+
 
 myLogHook :: Handle -> X ()
 myLogHook h = dynamicLogWithPP $ defaultPP
@@ -69,15 +83,56 @@ myLogHook h = dynamicLogWithPP $ defaultPP
       , ppOutput            =   hPutStrLn h
     }
 
+base03  = "#002b36"
+base02  = "#073642"
+base01  = "#586e75"
+base00  = "#657b83"
+base0   = "#839496"
+base1   = "#93a1a1"
+base2   = "#eee8d5"
+base3   = "#fdf6e3"
+yellow  = "#b58900"
+orange  = "#cb4b16"
+red     = "#dc322f"
+magenta = "#d33682"
+violet  = "#6c71c4"
+blue    = "#268bd2"
+cyan    = "#2aa198"
+green   = "#859900"
+
+gap     = 9
+border  = 0
+
+myNormalBorderColor  = base03
+myFocusedBorderColor = active
+
+active   = cyan
+activeWarn = red
+inactive = base02
+focusColor = blue
+unfocusColor = base02
+
+myShowWNameTheme = def
+    --{ swn_font = "xft:Monospace:pixelsize=120:regular:antialias=true:hinting=true"
+    { swn_font = "xft:Roboto:pixelsize=120:regular:antialias=true:hinting=true"
+    --{ swn_font = myBigFont
+    , swn_fade = 0.25
+    , swn_bgcolor = base03
+    , swn_color = active
+    }
+
+
 main = do
     -- xmproc <- spawnPipe "/usr/bin/xmobar /home/dpn/.xmonad/xmobarrc"
     xmproc <- spawnPipe myXmonadBar
     dzenRight <- spawnPipe myStatusBar
+--     conkyD <- spawnPipe conkyDesk
+--    dzenS2 <- spawnPipe myStatusBar2
     dConfig <- dzen desktopConfig
     xmonad $ docks
         def{
             keys = myKeys,
-            logHook = myLogHook xmproc  >> fadeInactiveLogHook 0xdddddddd,
+            logHook = myLogHook xmproc,
             --logHook = dynamicLogWithPP xmobarPP
             --            { ppOutput = hPutStrLn xmproc, ppTitle = xmobarColor "green" "" . shorten 50 },
             borderWidth = 3,
@@ -85,26 +140,27 @@ main = do
             focusFollowsMouse = True,
             focusedBorderColor = "#f92672",
             terminal = "tilix",
-            manageHook = manageDocks <+> manageHook dConfig,
+            manageHook = manageHook dConfig,
             startupHook = setWMName "LG3D",
-            layoutHook = showWName $
-            avoidStruts Circle |||
-            avoidStruts (spacing 5 $ Tall 1 (3/100) (1/2)) |||
-            -- Grid |||
-            avoidStruts (spacing 10 $ Grid) |||
-            -- (magnifiercz' 1.8 $ avoidStruts Grid) |||
-            avoidStruts Full |||
-            OneBig (0.5) (0.5) |||
-            avoidStruts (spacing 5 $ Mirror (Tall 1 (3/100) (1/2))) |||
-            avoidStruts (spacing 5 $ reflectHoriz (Tall 1 (3/100) (1/2))) |||
-            avoidStruts (spacing 5 $ reflectVert (Mirror (Tall 1 (3/100) (1/2)))) |||
-            avoidStruts (spacing 5 $ reflectVert (Mirror (Tall 1 (3/100) (1/2))))
+            layoutHook = desktopLayoutModifiers $ showWName' myShowWNameTheme $
+              avoidStruts Circle |||
+              avoidStruts Full |||
+              avoidStruts (spacing 5 $ (spiral (125 % 146)))  |||
+              avoidStruts (ThreeCol 1 (3/100) (1/2)) |||
+              avoidStruts (spacing 5 $ Tall 1 (3/100) (1/2)) |||
+               -- Grid |||
+              avoidStruts (spacing 5 $ Grid) |||
+              -- (magnifiercz' 1.8 $ avoidStruts Grid) |||
+              OneBig (0.5) (0.5) |||
+              avoidStruts (spacing 5 $ Mirror (Tall 1 (3/100) (1/2))) |||
+              avoidStruts (spacing 5 $ reflectHoriz (Tall 1 (3/100) (1/2))) -- |||
+              -- avoidStruts (spacing 10 $ reflectVert (Mirror (Tall 1 (3/100) (1/2))))
         } `additionalKeys`
-        [ ((0, xK_Scroll_Lock), spawn "gnome-screensaver-command -l;xset +dpms dpms 600 1200 1800")
+        [ ((0, xK_Scroll_Lock), spawn "xfce4-screensaver-command -l;xset +dpms dpms 600 1200 1800")
         , ((0, xF86XK_Tools), spawn "/usr/bin/nautilus")
         , ((0, xF86XK_Launch5), spawn "/usr/bin/nautilus")
-        , ((controlMask, xK_Print), spawn "sleep 0.2; shutter -f")
-        , ((0, xK_Print), spawn "shutter -s")
+        , ((controlMask, xK_Print), spawn "sleep 0.2; xfce4-screenshooter -w")
+        , ((0, xK_Print), spawn "xfce4-screenshooter -r")
         , ((0, xF86XK_AudioPlay), spawn "playerctl play-pause")
         , ((0, xF86XK_AudioStop), spawn "playerctl stop")
         , ((0, xF86XK_AudioPrev), spawn "playerctl previous")
@@ -112,6 +168,8 @@ main = do
         , ((0, xF86XK_AudioRaiseVolume), spawn "pactl set-sink-volume alsa_output.pci-0000_00_1b.0.analog-stereo +5%")
         , ((0, xF86XK_AudioLowerVolume), spawn "pactl set-sink-volume alsa_output.pci-0000_00_1b.0.analog-stereo -5%")
         , ((0, 0xffc5), spawn "autorandr -cf")
+        , ((0, xF86XK_Display), spawn "autorandr -cf")
+        , ((0, xF86XK_WakeUp), spawn "xfce4-screensaver-command -l;xset +dpms dpms 600 1200 1800")
         ]
 
 -- | The xmonad key bindings. Add, modify or remove key bindings here.
@@ -163,6 +221,9 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- repeat the binding for non-American layout keyboards
     , ((modMask              , xK_question), spawn ("echo \"" ++ help ++ "\" | xmessage -file -"))
     , ((mod4Mask,  xK_s), cycleRecentWindows [xK_Super_L] xK_s xK_w)
+    -- Window Copying Bindings
+    , ((modMask, xK_v ), windows copyToAll) -- @@ Make focused window always visible
+    , ((modMask .|. shiftMask, xK_v ),  killAllOtherCopies) -- @@ Toggle window state back
     ]
     ++
     -- mod-[1..9] %! Switch to workspace N

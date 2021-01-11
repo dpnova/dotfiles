@@ -66,7 +66,7 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(django sbt git scala python docker-compose virtualenvwrapper)
+plugins=(sbt git scala python docker-compose virtualenvwrapper)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -107,13 +107,13 @@ alias cb=git_current_branch
 
 
 #export BROWSER="google-chrome %s"
-export BROWSER="brave %s"
+#export BROWSER="brave %s"
 #export TERM=screen-256color
 export TERM=xterm-256color
 #export TERM=linux
 export EDITOR=vim
 export WORKON_HOME=~/.virtualenvs
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3.6
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3.8
 source /usr/local/bin/virtualenvwrapper.sh
 # xset m 20/10 10 r rate 280 22 b on
 # alias vim=nvim
@@ -135,20 +135,25 @@ bindkey '^r' history-incremental-search-backward
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 #export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*" --glob "!target/*"'
-export FZF_DEFAULT_COMMAND='fd --type f'
+export FZF_DEFAULT_COMMAND='fdfind --type f'
 
-export PATH="$HOME/.nodenv/bin:$PATH"
-export PATH="./node_modules/.bin:$PATH"
-export PATH=~/.npm-global/bin:$PATH
+#export PATH=~/.npm-global/bin:$PATH
 export PATH=/home/dpn/.local/bin:$PATH
 export PATH=/home/dpn/.cabal/bin:$PATH
+export PATH=$PATH:/usr/local/bin
 export GOPATH=~/gocode
-export PATH=$PATH:/home/dpn/.npm-path/bin
+#export PATH=$PATH:/home/dpn/.npm-path/bin
+export N_PREFIX=/home/dpn/n
+export PATH=/home/dpn/n/bin:$PATH
 #alias vim=~dpn/bin/nvim.appimage
 #if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
 #        source /etc/profile.d/vte.sh
 #fi
 
-#export P4COLORS="@info=0:@error=31;1:@warning=33;1:action=36:how:36:change=33:depotFile=32:path=32:location=32:rev=31:depotRev=31"
-autoload -Uz bp4o
-bp4o
+alias fd=fdfind
+
+# add Pulumi to the PATH
+export PATH=$PATH:$HOME/.pulumi/bin
+
+alias gcz="git cz"
+alias v=aws-vault

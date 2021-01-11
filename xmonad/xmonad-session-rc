@@ -1,9 +1,13 @@
-autorandr -cf home && feh --bg-scale ~/Pictures/destiny-2-garden-of-salvation-e.jpg &
 stalonetray &
 unclutter -idle 2 &
 xsetroot -cursor_name left_ptr &
 blueman-applet &
 nm-applet &
-xautolock -locker "gnome-screensaver-command -l" &
-xset +dpms dpms 600 1200 1800 &
-compton --config ~/.config/compton.conf &
+xfce4-screensaver &
+xfce4-power-manager &
+#xautolock -locker "gnome-screensaver-command -l" &
+#xset +dpms dpms 600 1200 1800 &
+#compton --config ~/compton.conf &
+dbus-launch compton --config .config/compton.conf &
+autorandr -cf && feh --bg-scale ~/Pictures/bg
+redshift-gtk &
