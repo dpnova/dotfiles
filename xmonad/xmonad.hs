@@ -100,11 +100,11 @@ main = do
             avoidStruts (spacing 5 $ reflectVert (Mirror (Tall 1 (3/100) (1/2)))) |||
             avoidStruts (spacing 5 $ reflectVert (Mirror (Tall 1 (3/100) (1/2))))
         } `additionalKeys`
-        [ ((0, xK_Scroll_Lock), spawn "gnome-screensaver-command -l;xset +dpms dpms 600 1200 1800")
+        [ ((0, xK_Scroll_Lock), spawn "xfce4-screensaver-command -l;xset +dpms dpms 600 1200 1800")
         , ((0, xF86XK_Tools), spawn "/usr/bin/nautilus")
         , ((0, xF86XK_Launch5), spawn "/usr/bin/nautilus")
-        , ((controlMask, xK_Print), spawn "sleep 0.2; shutter -f")
-        , ((0, xK_Print), spawn "shutter -s")
+        , ((controlMask, xK_Print), spawn "sleep 0.2; xfce4-screenshooter -w")
+        , ((0, xK_Print), spawn "xfce4-screenshooter -r")
         , ((0, xF86XK_AudioPlay), spawn "playerctl play-pause")
         , ((0, xF86XK_AudioStop), spawn "playerctl stop")
         , ((0, xF86XK_AudioPrev), spawn "playerctl previous")
