@@ -1,0 +1,6 @@
+---
+max_watch_history: 50
+server_url: "https://invidious.flokinet.to"
+display_thumbnails: true
+env:
+  download_location: ~/Downloads/%(title)s.%(ext)s

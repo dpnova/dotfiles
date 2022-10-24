@@ -1,0 +1,55 @@
+---
+? - - Alt
+  - Left
+: Back
+? - - None
+  - Home
+: Home
+? - - None
+  - End
+: ClearHistory
+? - - None
+  - PageDown
+: LastItem
+? - - None
+  - Enter
+: Select
+? - - None
+  - Right
+: Right
+? - - None
+  - Char: j
+: Down
+? - - None
+  - Up
+: Up
+? - - None
+  - Char: k
+: Up
+? - - None
+  - Backspace
+: Back
+? - - None
+  - Esc
+: Deselect
+? - - None
+  - Char: l
+: Right
+? - - None
+  - Char: h
+: Left
+? - - None
+  - Left
+: Left
+? - - None
+  - Down
+: Down
+? - - None
+  - PageUp
+: FirstItem
+? - - Control
+  - Char: r
+: Refresh
+? - - None
+  - Char: q
+: Exit

@@ -1,0 +1,35 @@
+---
+"item_info:video":
+  - label: Watch video
+    command: video_player
+  - label: Play audio
+    command: audio_player
+  - label: Play audio (loop)
+    command: audio_loop
+  - label: Download video
+    command: video_downloader
+  - label: Download audio
+    command: audio_downloader
+  - label: Visit channel
+    command: "{goto_channel}"
+  - label: "{mode}"
+    command: "{toggle_mode}"
+"item_info:playlist":
+  - label: Switch view
+    command: "{switch_view}"
+  - label: Watch all
+    command: video_player
+  - label: Play all audio
+    command: audio_player
+  - label: Shuffle play all audio
+    command: audio_playlist_shuffle
+  - label: Shuffle play all audio (loop)
+    command: audio_playlist_shuffle_loop
+  - label: Download all video
+    command: video_downloader
+  - label: Download all audio
+    command: audio_downloader
+  - label: Visit channel
+    command: "{goto_channel}"
+  - label: "{mode}"
+    command: "{toggle_mode}"

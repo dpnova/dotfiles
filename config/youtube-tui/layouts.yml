@@ -1,0 +1,182 @@
+---
+main_menu:
+  layout:
+    - items:
+        - item:
+            Global: SearchBar
+          constraint:
+            Min: 16
+        - item:
+            Global: SearchSettings
+          constraint:
+            Length: 5
+      centered: false
+      height:
+        Length: 3
+    - items:
+        - item:
+            MainMenu:
+              SelectorTab: Popular
+          constraint:
+            Length: 15
+        - item:
+            MainMenu:
+              SelectorTab: Trending
+          constraint:
+            Length: 15
+        - item:
+            MainMenu:
+              SelectorTab: History
+          constraint:
+            Length: 15
+      centered: true
+      height:
+        Length: 3
+    - items:
+        - item:
+            MainMenu: VideoList
+          constraint:
+            Percentage: 100
+      centered: false
+      height:
+        Min: 6
+    - items:
+        - item:
+            Global: MessageBar
+          constraint:
+            Percentage: 100
+      centered: false
+      height:
+        Length: 3
+  min:
+    - 45
+    - 15
+  message: Loading home page...
+  def_selected: ~
+channel:
+  layout:
+    - items:
+        - item:
+            Global: SearchBar
+          constraint:
+            Min: 16
+        - item:
+            Global: SearchSettings
+          constraint:
+            Length: 5
+      centered: false
+      height:
+        Length: 3
+    - items:
+        - item:
+            Channel:
+              SelectItems: Home
+          constraint:
+            Length: 15
+        - item:
+            Channel:
+              SelectItems: Videos
+          constraint:
+            Length: 15
+        - item:
+            Channel:
+              SelectItems: Playlists
+          constraint:
+            Length: 15
+      centered: true
+      height:
+        Length: 3
+    - items:
+        - item:
+            Channel: InfoDisplay
+          constraint:
+            Percentage: 100
+      centered: false
+      height:
+        Min: 6
+    - items:
+        - item:
+            Global: MessageBar
+          constraint:
+            Percentage: 100
+      centered: false
+      height:
+        Length: 3
+  min:
+    - 46
+    - 15
+  message: Loading channel info...
+  def_selected: ~
+item_info:
+  layout:
+    - items:
+        - item:
+            Global: SearchBar
+          constraint:
+            Min: 16
+        - item:
+            Global: SearchSettings
+          constraint:
+            Length: 5
+      centered: false
+      height:
+        Length: 3
+    - items:
+        - item: ItemInfo
+          constraint:
+            Percentage: 100
+      centered: false
+      height:
+        Min: 6
+    - items:
+        - item:
+            Global: MessageBar
+          constraint:
+            Percentage: 100
+      centered: false
+      height:
+        Length: 3
+  min:
+    - 21
+    - 12
+  message: Loading item info...
+  def_selected:
+    - 0
+    - 1
+search:
+  layout:
+    - items:
+        - item:
+            Global: SearchBar
+          constraint:
+            Min: 16
+        - item:
+            Global: SearchSettings
+          constraint:
+            Length: 5
+      centered: false
+      height:
+        Length: 3
+    - items:
+        - item:
+            Search: Search
+          constraint:
+            Percentage: 100
+      centered: false
+      height:
+        Min: 6
+    - items:
+        - item:
+            Global: MessageBar
+          constraint:
+            Percentage: 100
+      centered: false
+      height:
+        Length: 3
+  min:
+    - 45
+    - 12
+  message: Loading search results...
+  def_selected:
+    - 0
+    - 1

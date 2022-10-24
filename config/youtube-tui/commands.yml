@@ -1,0 +1,71 @@
+---
+audio_playlist_loop:
+  args:
+    - tilix
+    - "-e"
+    - mpv
+    - "{embed_url}"
+    - "--no-video"
+    - "--loop-playlist=inf"
+  message: Opened mpv in new konsole window
+audio_downloader:
+  args:
+    - tilix
+    - "-e"
+    - yt-dlp
+    - "{embed_url}"
+    - "-o"
+    - "{download_location}"
+    - "-x"
+  message: Download has started
+video_downloader:
+  args:
+    - tilix
+    - "-e"
+    - yt-dlp
+    - "{embed_url}"
+    - "-o"
+    - "{download_location}"
+  message: Download has started
+audio_playlist_shuffle:
+  args:
+    - tilix
+    - "-e"
+    - mpv
+    - "{embed_url}"
+    - "--no-video"
+    - "--shuffle"
+  message: Opened mpv in new konsole window
+video_player:
+  args:
+    - mpv
+    - "{embed_url}"
+    - "--no-terminal"
+  message: Launched mpv
+audio_player:
+  args:
+    - tilix
+    - "-e"
+    - mpv
+    - "{embed_url}"
+    - "--no-video"
+  message: Opened mpv in new tilix window
+audio_loop:
+  args:
+    - tilix
+    - "-e"
+    - mpv
+    - "{embed_url}"
+    - "--no-video"
+    - "--loop"
+  message: Opened mpv in new tilix window
+audio_playlist_shuffle_loop:
+  args:
+    - tilix
+    - "-e"
+    - mpv
+    - "{embed_url}"
+    - "--no-video"
+    - "--loop-playlist=inf"
+    - "--shuffle"
+  message: Opened mpv in new konsole window
