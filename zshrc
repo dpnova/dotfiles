@@ -66,7 +66,7 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(sbt git scala python docker-compose virtualenvwrapper)
+plugins=(git node python docker-compose) #virtualenvwrapper)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -114,7 +114,7 @@ export TERM=xterm-256color
 export EDITOR=vim
 export WORKON_HOME=~/.virtualenvs
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3.8
-source /usr/local/bin/virtualenvwrapper.sh
+#source /usr/local/bin/virtualenvwrapper.sh
 # xset m 20/10 10 r rate 280 22 b on
 # alias vim=nvim
 # Use vim cli mode
@@ -145,10 +145,13 @@ export GOPATH=~/gocode
 #export PATH=$PATH:/home/dpn/.npm-path/bin
 export N_PREFIX=/home/dpn/n
 export PATH=/home/dpn/n/bin:$PATH
+export PATH=/home/dpn/.pyenv/bin:$PATH
+export PATH=/home/dpn/.local/bin:$PATH
+export PATH=/home/dpn/.local/kitty.app/bin:$PATH
 #alias vim=~dpn/bin/nvim.appimage
-#if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
-#        source /etc/profile.d/vte.sh
-#fi
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+        source /etc/profile.d/vte.sh
+fi
 
 alias fd=fdfind
 
@@ -157,3 +160,9 @@ export PATH=$PATH:$HOME/.pulumi/bin
 
 alias gcz="git cz"
 alias v=aws-vault
+eval "$(pyenv init -)"
+export PATH="$HOME/.tfenv/bin:$PATH"
+alias por="poetry run"
+export QT_QPA_PLATFORM_PLUGIN_PATH=/usr/lib64/qt5/plugins
+export QT_QPA_PLATFORMTHEME=gtk2
+export XDG_DATA_DIRS=$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:/home/dpn/.local/share/flatpak/exports/share

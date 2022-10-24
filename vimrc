@@ -38,6 +38,7 @@ Plug 'w0rp/ale'
 Plug 'nvie/vim-flake8'
 Plug 'junegunn/vim-emoji'
 Plug 'ryanoasis/vim-devicons'
+Plug 'elkowar/yuck.vim'
 " Plug 'pangloss/vim-javascript'
 " Plug 'leafgarland/typescript-vim'
 
