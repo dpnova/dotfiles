@@ -7,6 +7,7 @@ set background=dark
 set guicursor=
 
 call plug#begin('~/.vim/plugged')
+Plug 'sainnhe/everforest'
 Plug 'neoclide/coc.nvim' , { 'branch' : 'release' }
 Plug 'pangloss/vim-javascript'    " JavaScript support
 Plug 'leafgarland/typescript-vim' " TypeScript syntax
@@ -95,7 +96,8 @@ set t_Co=256
 
 set history=100
 syntax enable
-colorscheme monokai
+" colorscheme monokai
+colorscheme everforest
 "colorscheme solarized
 let NERDTreeIgnore = ['\.pyc$', '__pycache__']
 
