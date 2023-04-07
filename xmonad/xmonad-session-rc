@@ -1,13 +1,2 @@
-stalonetray &
-unclutter -idle 2 &
-xsetroot -cursor_name left_ptr &
-blueman-applet &
-nm-applet &
-xfce4-screensaver &
-xfce4-power-manager &
-#xautolock -locker "gnome-screensaver-command -l" &
-#xset +dpms dpms 600 1200 1800 &
-#compton --config ~/compton.conf &
-dbus-launch compton --config .config/compton.conf &
-autorandr -cf && feh --bg-scale ~/Pictures/bg
-redshift-gtk &
+xrandr --newmode "2560x1440_60.00"  312.25  2560 2752 3024 3488  1440 1443 1448 1493 -hsync +vsync
+xrandr --addmode DP-2 2560x1440_60.00

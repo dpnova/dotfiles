@@ -50,7 +50,7 @@ import XMonad.Layout.MultiToggle.Instances
 
 myWorkspaces = ["1:dev","2:browse","3:comm","4:monitor","5:email","6:cast","7","8:tunes","9:hide"]
 base03  = "#002b36"
-base02  = "#073642"
+base02  = "#3A3945"
 base01  = "#586e75"
 base00  = "#657b83"
 base0   = "#839496"
@@ -60,6 +60,7 @@ base3   = "#fdf6e3"
 yellow  = "#b58900"
 orange  = "#cb4b16"
 orange2 = "#DD2820"
+salmon  = "#D4625E"
 red     = "#dc322f"
 magenta = "#d33682"
 violet  = "#6c71c4"
@@ -70,24 +71,25 @@ pink    = "#f92672"
 darker  = "#1E1F21"
 
 gap     = 9
-border  = 0
+border  = 2
 
-myNormalBorderColor  = base02
-myFocusedBorderColor = orange2
 
 active   = pink
 activeWarn = red
 inactive = darker
 focusColor = blue
 unfocusColor = base02
+feature = salmon
+
+myNormalBorderColor  = base02
+myFocusedBorderColor = feature
 
 myShowWNameTheme = def
     --{ swn_font = "xft:Monospace:pixelsize=120:regular:antialias=true:hinting=true"
     { swn_font = "xft:Roboto:pixelsize=120:regular:antialias=true:hinting=true"
-    --{ swn_font = myBigFont
-    , swn_fade = 0.25
+    , swn_fade = 0.4
     , swn_bgcolor = base03
-    , swn_color = active
+    , swn_color = feature
     }
 
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
@@ -100,7 +102,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 newKeys x = myKeys x `M.union` keys def x
 myTabTheme = (theme adwaitaDarkTheme)
     { decoHeight = 20
-    , fontName = "xft:Roboto:pixelsize=10:light:antialias=true:hinting=true"
+    , fontName = "xft:JetBrainsMono Nerd Font Mono:pixelsize=10:light:antialias=true:hinting=true,xft:Noto Color Emoji:size=10,xft:Emoji One:size=10"
     }
 myStartupHook = do
     spawnOnce "exec eww daemon"
@@ -110,23 +112,16 @@ myManageHook = composeAll
     [ className =? "Gimp"      --> doFloat
     , title =? "Whisker Menu"      --> doFloat
     , title =? "Whisker Menu"      --> hasBorder False
-    , title =? "zoom"      --> doFloat
     , title =? "Application Finder"      --> doFloat
-    , stringProperty "WM_WINDOW_ROLE" ^? "join?action=join" <&&> stringProperty "WM_WINDOW_ROLE" =? "zoom" --> doFloat
-    , stringProperty "WM_CLASS" ^? "join" <&&> stringProperty "WM_WINDOW_ROLE" =? "zoom" --> doFloat
-    --, stringProperty "WM_CLASS" ~? "join?action=join" <&&> stringProperty "WM_WINDOW_ROLE" =? "zoom" --> doFloat
-    , stringProperty "WM_WINDOW_ROLE" =? "quake" --> doFloat
-    , stringProperty "WM_WINDOW_ROLE" =? "quake" --> hasBorder False
-    , stringProperty "WM_WINDOW_STATE" =? "_NET_WM_STATE_STAYS_ON_TOP" --> hasBorder False
     , title =? "File Operation Progress" --> doFloat
---    , title =? "Zoom Meeting" --> hasBorder False
---    , MHelpers.isFullscreen --> hasBorder True
+    , className =? "zoom" --> (doFloat <+> hasBorder False)
+    , stringProperty "WM_WINDOW_ROLE" =? "quake" --> (doFloat <+> hasBorder False)
+    , isFullscreen --> hasBorder False
     , stringProperty "WM_WINDOW_TYPE" =? "_NET_WM_WINDOW_TYPE_HUDDLES-MINI-PANEL" --> hasBorder False
-    , isFullscreen --> (doF W.focusDown <+> doFullFloat <+> hasBorder True)
+    -- , isFullscreen --> (doF W.focusDown <+> doFullFloat <+> hasBorder False)
     ]
 
 -- Gaps around and between windows
--- Changes only seem to apply if I log out then in again
 -- Dimensions are given as (Border top bottom right left)
 mySpacing = spacingRaw True             -- Only for >1 window
                        -- The bottom edge seems to look narrower than it is
@@ -135,29 +130,36 @@ mySpacing = spacingRaw True             -- Only for >1 window
                        (Border 10 10 10 10) -- Size of window gaps
                        True             -- Enable window gaps
 
+myBigSpacing = spacingRaw True             -- Only for >1 window
+                       -- The bottom edge seems to look narrower than it is
+                       (Border 0 55 45 45) -- Size of screen edge gaps
+                       True             -- Enable screen edge gaps
+                       (Border 40 40 40 40) -- Size of window gaps
+                       True             -- Enable window gaps
 
 main = xmonad $ ewmhFullscreen $ ewmh $ xfceConfig  {
-            borderWidth = 5,
+            borderWidth = border,
             workspaces = myWorkspaces,
             focusFollowsMouse = True,
             focusedBorderColor = myFocusedBorderColor,
             normalBorderColor = myNormalBorderColor,
             keys = newKeys,
-            terminal = "tilix",
+            terminal = "/home/dpn/.local/kitty.app/bin/kitty",
             manageHook =  manageDocks <+> myManageHook <+> manageHook def, -- insertPosition Below Newer <>
             startupHook = myStartupHook,
             layoutHook = addTabs shrinkText myTabTheme $
                 MT.mkToggle (MT.single REFLECTX) $
                 MT.mkToggle (MT.single NBFULL) $
+                showWName' myShowWNameTheme $
                 subLayout [] Simplest $
                 avoidStruts $
                 smartBorders $
-                desktopLayoutModifiers $
-                showWName' myShowWNameTheme
+                desktopLayoutModifiers
               Circle |||
-              Full |||
+              mySpacing Full |||
               (mySpacing $ reflectHoriz (ThreeCol 1 (3/100) (1/2))) |||
-              (mySpacing $ Tall 1 (3/100) (1/2)) |||
+              (myBigSpacing $ Tall 1 (3/100) (1/2)) |||
+              (myBigSpacing $ Tall 1 (3/100) (1/2)) |||
               (autoMaster 1 (1/100) (mySpacing $ tabbed shrinkText myTabTheme)) |||
               (mySpacing (spiral (125 % 146)))  |||
               -- (ThreeCol 1 (3/100) (1/2)) |||
