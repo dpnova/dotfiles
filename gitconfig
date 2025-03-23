@@ -7,7 +7,7 @@
 [alias]
 	d = difftool
 [merge]
-  tool = vimdiff
+	tool = fugitive
 [mergetool]
   prompt = true
 [mergetool "vimdiff"]
@@ -18,3 +18,7 @@
   tool = vimdiff
 [core]
 	excludesfile = /home/dpn/.gitignore
+[pull]
+	rebase = false
+[mergetool "fugitive"]
+	cmd = vim -f -c \"Gvdiffsplit!\" \"$MERGED\"

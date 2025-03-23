@@ -2,9 +2,9 @@
 # Added by Gogh
 include colors.conf
 active_border_color #B54D46
-window_border_width 4pt
+window_border_width 2pt
 
-##fonts
+#fonts
 symbol_map U+e000-U+e00a,U+ea60-U+ebeb,U+e0a0-U+e0c8,U+e0ca,U+e0cc-U+e0d7,U+e200-U+e2a9,U+e300-U+e3e3,U+e5fa-U+e6b1,U+e700-U+e7c5,U+ed00-U+efc1,U+f000-U+f2ff,U+f000-U+f2e0,U+f300-U+f372,U+f400-U+f533,U+f0001-U+f1af0 Symbols Nerd Font Mono
 
 font_size 10
@@ -21,7 +21,7 @@ background_opacity 0.95
 tab_bar_style custom
 tab_bar_edge top
 tab_separator ""
-tab_bar_min_tabs 1
+tab_bar_min_tabs 2
 tab_title_template " {index}: {f'{title[:10]}…{title[-8:]}' if title.rindex(title[-1]) + 1 > 18 else title} "
 
 #map ctrl+g kitten hints --type=linenum --linenum-action=tab code -g "{path}":{line}
@@ -29,13 +29,10 @@ tab_title_template " {index}: {f'{title[:10]}…{title[-8:]}' if title.rindex(ti
 map ctrl+g kitten hints --type=linenum --linenum-action=tab vim +{line} "{path}"
 map ctrl+shift+g kitten hints --type=path --program="vim "
 
-map ctrl+shift+enter launch --cwd=current
-
 
 # BEGIN_KITTY_FONTS
-font_family      family="Fira Code"
+font_family      family="FreeMono"
 bold_font        auto
 italic_font      auto
 bold_italic_font auto
 # END_KITTY_FONTS
-text_composition_strategy 0.5 0

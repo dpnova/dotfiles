@@ -66,7 +66,7 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git node python docker-compose) #virtualenvwrapper)
+plugins=(git node docker-compose) #virtualenvwrapper python )
 
 source $ZSH/oh-my-zsh.sh
 
@@ -109,14 +109,14 @@ alias cb=git_current_branch
 #export BROWSER="google-chrome %s"
 #export BROWSER="brave %s"
 #export TERM=screen-256color
-export TERM=xterm-256color
+#export TERM=xterm-256color
 #export TERM=linux
+export TERM=xterm-kitty
 export EDITOR=vim
 export WORKON_HOME=~/.virtualenvs
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3.8
 #source /usr/local/bin/virtualenvwrapper.sh
 # xset m 20/10 10 r rate 280 22 b on
-# alias vim=nvim
 # Use vim cli mode
 bindkey '^P' up-history
 bindkey '^N' down-history
@@ -135,7 +135,8 @@ bindkey '^r' history-incremental-search-backward
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 #export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*" --glob "!target/*"'
-export FZF_DEFAULT_COMMAND='fdfind --type f'
+export FZF_DEFAULT_COMMAND='fdfind --type f --hidden --exclude .git'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 #export PATH=~/.npm-global/bin:$PATH
 export PATH=/home/dpn/.local/bin:$PATH
@@ -143,15 +144,13 @@ export PATH=/home/dpn/.cabal/bin:$PATH
 export PATH=$PATH:/usr/local/bin
 export GOPATH=~/gocode
 #export PATH=$PATH:/home/dpn/.npm-path/bin
-export N_PREFIX=/home/dpn/n
-export PATH=/home/dpn/n/bin:$PATH
 export PATH=/home/dpn/.pyenv/bin:$PATH
 export PATH=/home/dpn/.local/bin:$PATH
 export PATH=/home/dpn/.local/kitty.app/bin:$PATH
 #alias vim=~dpn/bin/nvim.appimage
-if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
-        source /etc/profile.d/vte.sh
-fi
+#if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+#        source /etc/profile.d/vte.sh
+#fi
 
 alias fd=fdfind
 
@@ -161,8 +160,35 @@ export PATH=$PATH:$HOME/.pulumi/bin
 alias gcz="git cz"
 alias v=aws-vault
 eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 export PATH="$HOME/.tfenv/bin:$PATH"
 alias por="poetry run"
 export QT_QPA_PLATFORM_PLUGIN_PATH=/usr/lib64/qt5/plugins
 export QT_QPA_PLATFORMTHEME=gtk2
 export XDG_DATA_DIRS=$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:/home/dpn/.local/share/flatpak/exports/share
+alias aws=awscliv2
+
+# bun completions
+[ -s "/home/dpn/.bun/_bun" ] && source "/home/dpn/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/home/dpn/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+alias pnpx="pnpm dlx"
+export N_PREFIX=/home/dpn/n
+export PATH=/home/dpn/n/bin:$PATH
+alias gitlog="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue) <%an> %Creset' --abbrev-commit"
+
+
+alias gogh="bash -c  \"$(wget -qO- https://git.io/vQgMr)\""
+COMPOSE_BAKE=true
+alias vim=nvim
+alias vdiff='/usr/bin/vim +Gvdiffsplit\!'
